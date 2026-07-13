@@ -1,0 +1,1678 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="./support.js"></script>
+  </head>
+  <body>
+    <x-dc>
+      <helmet>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;family=Noto+Serif+Bengali:wght@500;600;700;800&amp;display=swap"
+          rel="stylesheet"
+        />
+        <style>
+          html,
+          body {
+            margin: 0;
+            padding: 0;
+            background: #e9e3d5;
+          }
+          body {
+            font-family: "Hind Siliguri", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+          }
+          a {
+            color: #2e6e5e;
+            text-decoration: none;
+          }
+          a:hover {
+            color: #8a6d29;
+          }
+          input::placeholder {
+            color: rgba(246, 243, 236, 0.5);
+          }
+          @keyframes riseIn {
+            from {
+              opacity: 0;
+              transform: translateY(10px) scale(0.98);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0) scale(1);
+            }
+          }
+          @keyframes checkPop {
+            0% {
+              transform: scale(0.4);
+              opacity: 0;
+            }
+            60% {
+              transform: scale(1.2);
+              opacity: 1;
+            }
+            100% {
+              transform: scale(1);
+              opacity: 1;
+            }
+          }
+          @keyframes breathe {
+            0%,
+            100% {
+              transform: scale(1);
+              box-shadow: 0 0 0 0 rgba(217, 180, 90, 0.22);
+            }
+            50% {
+              transform: scale(1.26);
+              box-shadow: 0 0 54px 8px rgba(217, 180, 90, 0.16);
+            }
+          }
+          @keyframes glowPulse {
+            0%,
+            100% {
+              opacity: 0.65;
+            }
+            50% {
+              opacity: 1;
+            }
+          }
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+        </style>
+      </helmet>
+      <div
+        style="
+          min-height: 100vh;
+          display: flex;
+          justify-content: center;
+          background: #e9e3d5;
+        "
+      >
+        <div
+          style="
+            width: 100%;
+            max-width: 430px;
+            background: #f6f3ec;
+            min-height: 100vh;
+            box-shadow: 0 0 44px rgba(15, 38, 32, 0.1);
+            position: relative;
+            padding-bottom: 122px;
+            box-sizing: border-box;
+          "
+        >
+          <header
+            data-screen-label="হেডার"
+            style="
+              position: relative;
+              overflow: hidden;
+              background: #0f2620;
+              padding: 34px 22px 26px;
+              border-radius: 0 0 28px 28px;
+              text-align: center;
+            "
+          >
+            <div
+              style="
+                position: absolute;
+                top: -110px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 360px;
+                height: 260px;
+                background: radial-gradient(
+                  circle,
+                  rgba(217, 180, 90, 0.3),
+                  transparent 65%
+                );
+                pointer-events: none;
+              "
+            ></div>
+            <div
+              style="
+                position: relative;
+                display: flex;
+                justify-content: center;
+                margin-bottom: 10px;
+              "
+            >
+              <svg width="26" height="26" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" style="fill: #d9b45a"></circle>
+                <circle cx="15.5" cy="10" r="8" style="fill: #0f2620"></circle>
+              </svg>
+            </div>
+            <h1
+              style="
+                position: relative;
+                margin: 0;
+                font-family: &quot;Noto Serif Bengali&quot;, serif;
+                font-size: 26px;
+                font-weight: 800;
+                color: #f6f3ec;
+                line-height: 1.4;
+              "
+            >
+              সাকিবের দৈনিক সিস্টেম
+            </h1>
+            <div
+              style="
+                position: relative;
+                display: inline-flex;
+                margin-top: 10px;
+                padding: 6px 15px 7px;
+                border: 1px solid rgba(217, 180, 90, 0.42);
+                border-radius: 999px;
+                background: rgba(217, 180, 90, 0.1);
+              "
+            >
+              <span
+                style="
+                  font-family: &quot;Noto Serif Bengali&quot;, serif;
+                  font-size: 13px;
+                  font-weight: 600;
+                  color: #e9c86e;
+                  line-height: 1.6;
+                "
+                >নিখুঁত দিন লক্ষ্য নয় — ধারাবাহিক দিন লক্ষ্য</span
+              >
+            </div>
+            <div
+              style="
+                position: relative;
+                margin-top: 13px;
+                font-size: 13.5px;
+                font-weight: 500;
+                color: rgba(246, 243, 236, 0.68);
+                line-height: 1.6;
+              "
+            >
+              {{ fullDate }}
+            </div>
+          </header>
+
+          <section
+            data-screen-label="আজকের রুটিন"
+            style="padding: 24px 18px 2px"
+          >
+            <div
+              style="
+                display: flex;
+                align-items: baseline;
+                justify-content: space-between;
+                margin: 0 4px 14px;
+              "
+            >
+              <h2
+                style="
+                  margin: 0;
+                  font-family: &quot;Noto Serif Bengali&quot;, serif;
+                  font-size: 15px;
+                  font-weight: 700;
+                  color: #8a6d29;
+                "
+              >
+                আজকের রুটিন
+              </h2>
+              <span style="font-size: 13px; font-weight: 600; color: #6f7a72"
+                >{{ tProgress }} সম্পন্ন</span
+              >
+            </div>
+            <sc-for
+              list="{{ timelineItems }}"
+              as="item"
+              hint-placeholder-count="4"
+            >
+              <div style="display: flex; gap: 12px">
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 14px;
+                    flex: none;
+                    padding-top: 24px;
+                  "
+                >
+                  <div
+                    style="width:12px;height:12px;flex:none;border-radius:50%;border:2px solid #d9b45a;background:{{ item.nodeBg }};transition:background 0.25s;"
+                  ></div>
+                  <div
+                    style="width:2px;flex:1;background:{{ item.lineBg }};margin-top:4px;border-radius:2px;"
+                  ></div>
+                </div>
+                <button
+                  onClick="{{ item.toggle }}"
+                  style="appearance:none;-webkit-appearance:none;font-family:inherit;text-align:left;box-sizing:border-box;cursor:pointer;flex:1;min-width:0;display:block;background:{{ item.cardBg }};border:1px solid {{ item.cardBorder }};border-radius:18px;padding:14px 16px 15px;margin:0 0 12px;box-shadow:0 1px 3px rgba(15,38,32,0.05);transition:background 0.25s, border-color 0.25s, transform 0.12s;"
+                  style-active="transform:scale(0.985);"
+                >
+                  <span
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      gap: 12px;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <span
+                      style="
+                        font-family: &quot;Noto Serif Bengali&quot;, serif;
+                        font-size: 13px;
+                        font-weight: 700;
+                        color: #8a6d29;
+                        background: rgba(217, 180, 90, 0.15);
+                        border: 1px solid rgba(217, 180, 90, 0.35);
+                        padding: 2px 11px 4px;
+                        border-radius: 999px;
+                        line-height: 1.6;
+                      "
+                      >{{ item.anchor }}</span
+                    >
+                    <span
+                      style="width:32px;height:32px;flex:none;box-sizing:border-box;border-radius:50%;border:2px solid {{ item.checkBorder }};background:{{ item.checkBg }};display:flex;align-items:center;justify-content:center;transition:background 0.2s, border-color 0.2s;"
+                    >
+                      <sc-if
+                        value="{{ item.checked }}"
+                        hint-placeholder-val="{{ false }}"
+                      >
+                        <svg
+                          width="15"
+                          height="15"
+                          viewBox="0 0 16 16"
+                          style="animation: checkPop 0.35s ease"
+                        >
+                          <path
+                            d="M3 8.5 L6.5 12 L13 4.5"
+                            style="
+                              stroke: #ffffff;
+                              stroke-width: 2.6;
+                              fill: none;
+                              stroke-linecap: round;
+                              stroke-linejoin: round;
+                            "
+                          ></path>
+                        </svg>
+                      </sc-if>
+                    </span>
+                  </span>
+                  <span
+                    style="display:block;font-size:16px;font-weight:600;color:#22332c;line-height:1.6;opacity:{{ item.textOpacity }};transition:opacity 0.25s;"
+                    >{{ item.task }}</span
+                  >
+                  <sc-if
+                    value="{{ item.sub }}"
+                    hint-placeholder-val="{{ false }}"
+                  >
+                    <span
+                      style="
+                        display: block;
+                        margin-top: 4px;
+                        font-size: 13px;
+                        font-weight: 500;
+                        color: #7e8880;
+                        line-height: 1.6;
+                      "
+                      >{{ item.sub }}</span
+                    >
+                  </sc-if>
+                </button>
+              </div>
+            </sc-for>
+          </section>
+
+          <section
+            data-screen-label="দৈনিক স্কোরকার্ড"
+            style="padding: 14px 18px 0"
+          >
+            <div
+              style="
+                display: flex;
+                align-items: baseline;
+                justify-content: space-between;
+                margin: 0 4px 14px;
+              "
+            >
+              <h2
+                style="
+                  margin: 0;
+                  font-family: &quot;Noto Serif Bengali&quot;, serif;
+                  font-size: 15px;
+                  font-weight: 700;
+                  color: #8a6d29;
+                "
+              >
+                দৈনিক স্কোরকার্ড
+              </h2>
+              <span style="font-size: 13px; font-weight: 600; color: #6f7a72"
+                >{{ sProgress }}</span
+              >
+            </div>
+            <div
+              style="
+                background: #fffdf8;
+                border: 1px solid rgba(15, 38, 32, 0.08);
+                border-radius: 20px;
+                box-shadow: 0 1px 3px rgba(15, 38, 32, 0.05);
+                overflow: hidden;
+              "
+            >
+              <sc-for
+                list="{{ scoreItems }}"
+                as="item"
+                hint-placeholder-count="4"
+              >
+                <button
+                  onClick="{{ item.toggle }}"
+                  style="appearance:none;-webkit-appearance:none;font-family:inherit;width:100%;box-sizing:border-box;display:flex;align-items:center;gap:14px;padding:15px 16px;background:{{ item.rowBg }};border:none;border-bottom:{{ item.rowBorder }};cursor:pointer;text-align:left;transition:background 0.2s;"
+                  style-active="background:rgba(46,110,94,0.12);"
+                >
+                  <span
+                    style="width:30px;height:30px;flex:none;box-sizing:border-box;border-radius:10px;border:2px solid {{ item.boxBorder }};background:{{ item.boxBg }};display:flex;align-items:center;justify-content:center;transition:background 0.2s, border-color 0.2s;"
+                  >
+                    <sc-if
+                      value="{{ item.checked }}"
+                      hint-placeholder-val="{{ false }}"
+                    >
+                      <svg
+                        width="15"
+                        height="15"
+                        viewBox="0 0 16 16"
+                        style="animation: checkPop 0.35s ease"
+                      >
+                        <path
+                          d="M3 8.5 L6.5 12 L13 4.5"
+                          style="
+                            stroke: #ffffff;
+                            stroke-width: 2.6;
+                            fill: none;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                          "
+                        ></path>
+                      </svg>
+                    </sc-if>
+                  </span>
+                  <span
+                    style="
+                      font-size: 16.5px;
+                      font-weight: 600;
+                      color: #22332c;
+                      flex: 1;
+                      line-height: 1.5;
+                    "
+                    >{{ item.label }}</span
+                  >
+                </button>
+              </sc-for>
+            </div>
+            <div style="margin: 8px 6px 0; font-size: 12.5px; color: #8b9289">
+              ৪টির মধ্যে অন্তত ৩টি হলেই দিনটি সফল
+            </div>
+            <sc-if
+              value="{{ isSuccessToday }}"
+              hint-placeholder-val="{{ false }}"
+            >
+              <div
+                style="
+                  margin-top: 14px;
+                  position: relative;
+                  overflow: hidden;
+                  background: #0f2620;
+                  border-radius: 18px;
+                  padding: 18px 18px 19px;
+                  text-align: center;
+                  animation: riseIn 0.5s cubic-bezier(0.2, 0.8, 0.3, 1);
+                  box-shadow: 0 8px 24px rgba(15, 38, 32, 0.25);
+                "
+              >
+                <div
+                  style="
+                    position: absolute;
+                    inset: 0;
+                    background: radial-gradient(
+                      circle at 50% 0%,
+                      rgba(217, 180, 90, 0.32),
+                      transparent 62%
+                    );
+                    animation: glowPulse 3s ease-in-out infinite;
+                  "
+                ></div>
+                <div
+                  style="
+                    position: relative;
+                    font-family: &quot;Noto Serif Bengali&quot;, serif;
+                    font-size: 20px;
+                    font-weight: 800;
+                    color: #e9c86e;
+                    line-height: 1.5;
+                  "
+                >
+                  আজকের দিন সফল! ✓
+                </div>
+                <div
+                  style="
+                    position: relative;
+                    margin-top: 3px;
+                    font-size: 13.5px;
+                    color: rgba(246, 243, 236, 0.75);
+                    line-height: 1.6;
+                  "
+                >
+                  আলহামদুলিল্লাহ — ধারাবাহিকতা বজায় থাকল
+                </div>
+              </div>
+            </sc-if>
+          </section>
+
+          <section
+            data-screen-label="ধারা ও ইতিহাস"
+            style="padding: 26px 18px 0"
+          >
+            <h2
+              style="
+                margin: 0 4px 14px;
+                font-family: &quot;Noto Serif Bengali&quot;, serif;
+                font-size: 15px;
+                font-weight: 700;
+                color: #8a6d29;
+              "
+            >
+              ধারা ও ইতিহাস
+            </h2>
+            <div
+              style="
+                background: #fffdf8;
+                border: 1px solid rgba(15, 38, 32, 0.08);
+                border-radius: 20px;
+                padding: 18px 18px 16px;
+                box-shadow: 0 1px 3px rgba(15, 38, 32, 0.05);
+              "
+            >
+              <div style="display: flex; align-items: center; gap: 14px">
+                <div
+                  style="
+                    width: 52px;
+                    height: 52px;
+                    flex: none;
+                    border-radius: 50%;
+                    background: rgba(217, 180, 90, 0.16);
+                    border: 1px solid rgba(217, 180, 90, 0.4);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <svg width="26" height="26" viewBox="0 0 24 24">
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="9"
+                      style="fill: #b98f33"
+                    ></circle>
+                    <circle
+                      cx="16"
+                      cy="9.5"
+                      r="8"
+                      style="fill: #f9f1df"
+                    ></circle>
+                  </svg>
+                </div>
+                <div style="flex: 1; min-width: 0">
+                  <div style="display: flex; align-items: baseline; gap: 8px">
+                    <span
+                      style="
+                        font-family: &quot;Noto Serif Bengali&quot;, serif;
+                        font-size: 40px;
+                        line-height: 1.1;
+                        font-weight: 800;
+                        color: #17402f;
+                      "
+                      >{{ streakBn }}</span
+                    >
+                    <span
+                      style="font-size: 14px; font-weight: 600; color: #6f7a72"
+                      >দিনের ধারা</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      margin-top: 2px;
+                      font-size: 12.5px;
+                      font-weight: 500;
+                      color: #8b9289;
+                    "
+                  >
+                    মোট সফল দিন: {{ allTimeBn }}
+                  </div>
+                </div>
+              </div>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(7, 1fr);
+                  gap: 4px;
+                  margin-top: 18px;
+                "
+              >
+                <sc-for list="{{ weekDots }}" as="d" hint-placeholder-count="7">
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      gap: 7px;
+                    "
+                  >
+                    <span
+                      style="width:18px;height:18px;box-sizing:border-box;border-radius:50%;background:{{ d.bg }};border:{{ d.border }};box-shadow:{{ d.shadow }};transition:background 0.25s;"
+                    ></span>
+                    <span
+                      style="font-size:11px;font-weight:{{ d.labelWeight }};color:{{ d.labelColor }};"
+                      >{{ d.label }}</span
+                    >
+                  </div>
+                </sc-for>
+              </div>
+              <div
+                style="
+                  margin-top: 16px;
+                  background: rgba(46, 110, 94, 0.08);
+                  border-radius: 12px;
+                  padding: 10px 13px;
+                "
+              >
+                <span
+                  style="
+                    font-size: 13.5px;
+                    font-weight: 600;
+                    color: #2e6e5e;
+                    line-height: 1.65;
+                  "
+                  >{{ streakMsg }}</span
+                >
+              </div>
+            </div>
+          </section>
+
+          <sc-if value="{{ showWeekly }}" hint-placeholder-val="{{ false }}">
+            <section
+              data-screen-label="সাপ্তাহিক পর্যালোচনা"
+              style="padding: 26px 18px 0"
+            >
+              <div
+                style="
+                  position: relative;
+                  overflow: hidden;
+                  background: #2e6e5e;
+                  border-radius: 20px;
+                  padding: 20px 18px 18px;
+                  box-shadow: 0 6px 18px rgba(46, 110, 94, 0.22);
+                "
+              >
+                <div
+                  style="
+                    position: absolute;
+                    top: -90px;
+                    right: -60px;
+                    width: 220px;
+                    height: 220px;
+                    background: radial-gradient(
+                      circle,
+                      rgba(217, 180, 90, 0.28),
+                      transparent 65%
+                    );
+                    pointer-events: none;
+                  "
+                ></div>
+                <div
+                  style="
+                    position: relative;
+                    font-family: &quot;Noto Serif Bengali&quot;, serif;
+                    font-size: 13px;
+                    font-weight: 700;
+                    color: #efd48a;
+                  "
+                >
+                  সাপ্তাহিক পর্যালোচনা — জুমা মুবারক
+                </div>
+                <div
+                  style="
+                    position: relative;
+                    margin-top: 7px;
+                    font-family: &quot;Noto Serif Bengali&quot;, serif;
+                    font-size: 22px;
+                    font-weight: 800;
+                    color: #f6f3ec;
+                    line-height: 1.5;
+                  "
+                >
+                  এই সপ্তাহে {{ weekCountBn }}/৭ দিন সফল
+                </div>
+                <input
+                  value="{{ reflectionText }}"
+                  onChange="{{ onReflect }}"
+                  placeholder="এক লাইনে এই সপ্তাহের উপলব্ধি…"
+                  style="
+                    position: relative;
+                    margin-top: 13px;
+                    width: 100%;
+                    box-sizing: border-box;
+                    background: rgba(246, 243, 236, 0.1);
+                    border: 1px solid rgba(246, 243, 236, 0.28);
+                    border-radius: 12px;
+                    padding: 12px 14px;
+                    font-family: inherit;
+                    font-size: 14.5px;
+                    font-weight: 500;
+                    color: #f6f3ec;
+                    outline: none;
+                  "
+                />
+              </div>
+            </section>
+          </sc-if>
+
+          <footer
+            data-screen-label="ফুটার"
+            style="padding: 36px 28px 26px; text-align: center"
+          >
+            <div
+              style="
+                width: 26px;
+                height: 2px;
+                background: #d9b45a;
+                margin: 0 auto 16px;
+                border-radius: 2px;
+              "
+            ></div>
+            <p
+              style="
+                margin: 0;
+                font-family: &quot;Noto Serif Bengali&quot;, serif;
+                font-size: 15px;
+                font-weight: 600;
+                color: #4a544d;
+                line-height: 2;
+              "
+            >
+              &#8220;নিশ্চয়ই আল্লাহ কোনো জাতির অবস্থা পরিবর্তন করেন না, যতক্ষণ
+              না তারা নিজেরা নিজেদের অবস্থা পরিবর্তন করে&#8221;
+            </p>
+            <p
+              style="
+                margin: 10px 0 0;
+                font-size: 12.5px;
+                font-weight: 700;
+                color: #8a6d29;
+              "
+            >
+              — সূরা আর-রাদ ১৩:১১
+            </p>
+          </footer>
+
+          <button
+            data-screen-label="ইমার্জেন্সি বাটন"
+            onClick="{{ openEmergency }}"
+            style="
+              position: fixed;
+              bottom: 14px;
+              left: 50%;
+              transform: translateX(-50%);
+              width: min(394px, calc(100% - 32px));
+              z-index: 60;
+              box-sizing: border-box;
+              background: #0f2620;
+              border: 1.5px solid rgba(217, 180, 90, 0.55);
+              border-radius: 999px;
+              padding: 15px 20px;
+              cursor: pointer;
+              font-family: &quot;Hind Siliguri&quot;, sans-serif;
+              font-size: 16px;
+              font-weight: 700;
+              color: #e9c86e;
+              box-shadow: 0 10px 28px rgba(15, 38, 32, 0.35);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 10px;
+              transition: box-shadow 0.15s;
+            "
+            style-hover="box-shadow:0 14px 34px rgba(15,38,32,0.5);"
+            style-active="transform:translateX(-50%) scale(0.975);"
+          >
+            <span
+              style="
+                width: 8px;
+                height: 8px;
+                flex: none;
+                border-radius: 50%;
+                background: #d9b45a;
+                animation: glowPulse 1.8s ease-in-out infinite;
+              "
+            ></span>
+            তাড়না আসছে? এখনই চাপুন
+          </button>
+
+          <sc-if value="{{ showEmergency }}" hint-placeholder-val="{{ false }}">
+            <div
+              data-screen-label="ইমার্জেন্সি ওভারলে"
+              style="
+                position: fixed;
+                inset: 0;
+                z-index: 100;
+                background: #0f2620;
+                overflow: auto;
+                animation: fadeIn 0.3s ease;
+              "
+            >
+              <div
+                style="
+                  position: fixed;
+                  top: -130px;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  width: 480px;
+                  height: 300px;
+                  background: radial-gradient(
+                    circle,
+                    rgba(217, 180, 90, 0.24),
+                    transparent 65%
+                  );
+                  pointer-events: none;
+                "
+              ></div>
+              <div
+                style="
+                  max-width: 430px;
+                  margin: 0 auto;
+                  min-height: 100%;
+                  box-sizing: border-box;
+                  padding: 42px 26px 32px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 20px;
+                "
+              >
+                <div style="text-align: center">
+                  <div
+                    style="
+                      font-size: 13px;
+                      font-weight: 600;
+                      letter-spacing: 0.03em;
+                      color: rgba(217, 180, 90, 0.9);
+                    "
+                  >
+                    থামুন — এই মুহূর্তটা পার করে দিন
+                  </div>
+                  <h2
+                    style="
+                      margin: 6px 0 0;
+                      font-family: &quot;Noto Serif Bengali&quot;, serif;
+                      font-size: 28px;
+                      font-weight: 800;
+                      color: #f6f3ec;
+                    "
+                  >
+                    শান্ত হোন
+                  </h2>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 10px">
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 13px;
+                      background: rgba(246, 243, 236, 0.06);
+                      border: 1px solid rgba(246, 243, 236, 0.13);
+                      border-radius: 14px;
+                      padding: 13px 15px;
+                    "
+                  >
+                    <span
+                      style="
+                        width: 28px;
+                        height: 28px;
+                        flex: none;
+                        box-sizing: border-box;
+                        border: 1.5px solid rgba(217, 180, 90, 0.7);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-family: &quot;Noto Serif Bengali&quot;, serif;
+                        font-size: 13px;
+                        font-weight: 700;
+                        color: #e9c86e;
+                      "
+                      >১</span
+                    >
+                    <span
+                      style="
+                        font-size: 15.5px;
+                        font-weight: 600;
+                        color: #f6f3ec;
+                        line-height: 1.5;
+                      "
+                      >উঠে দাঁড়ান</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 13px;
+                      background: rgba(246, 243, 236, 0.06);
+                      border: 1px solid rgba(246, 243, 236, 0.13);
+                      border-radius: 14px;
+                      padding: 13px 15px;
+                    "
+                  >
+                    <span
+                      style="
+                        width: 28px;
+                        height: 28px;
+                        flex: none;
+                        box-sizing: border-box;
+                        border: 1.5px solid rgba(217, 180, 90, 0.7);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-family: &quot;Noto Serif Bengali&quot;, serif;
+                        font-size: 13px;
+                        font-weight: 700;
+                        color: #e9c86e;
+                      "
+                      >২</span
+                    >
+                    <span
+                      style="
+                        font-size: 15.5px;
+                        font-weight: 600;
+                        color: #f6f3ec;
+                        line-height: 1.5;
+                      "
+                      >অজু করুন</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 13px;
+                      background: rgba(246, 243, 236, 0.06);
+                      border: 1px solid rgba(246, 243, 236, 0.13);
+                      border-radius: 14px;
+                      padding: 13px 15px;
+                    "
+                  >
+                    <span
+                      style="
+                        width: 28px;
+                        height: 28px;
+                        flex: none;
+                        box-sizing: border-box;
+                        border: 1.5px solid rgba(217, 180, 90, 0.7);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-family: &quot;Noto Serif Bengali&quot;, serif;
+                        font-size: 13px;
+                        font-weight: 700;
+                        color: #e9c86e;
+                      "
+                      >৩</span
+                    >
+                    <span
+                      style="
+                        font-size: 15.5px;
+                        font-weight: 600;
+                        color: #f6f3ec;
+                        line-height: 1.5;
+                      "
+                      >২ রাকাত নামাজ বা ২০টা পুশআপ</span
+                    >
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 16px;
+                    margin-top: 10px;
+                  "
+                >
+                  <div
+                    style="
+                      width: 148px;
+                      height: 148px;
+                      box-sizing: border-box;
+                      border-radius: 50%;
+                      border: 2px solid rgba(217, 180, 90, 0.65);
+                      background: rgba(217, 180, 90, 0.06);
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      justify-content: center;
+                      animation: breathe 8s ease-in-out infinite;
+                    "
+                  >
+                    <sc-if
+                      value="{{ countdownRunning }}"
+                      hint-placeholder-val="{{ false }}"
+                    >
+                      <span
+                        style="
+                          font-family: &quot;Noto Serif Bengali&quot;, serif;
+                          font-size: 42px;
+                          font-weight: 800;
+                          color: #e9c86e;
+                          line-height: 1.15;
+                        "
+                        >{{ countdownBn }}</span
+                      >
+                      <span
+                        style="
+                          font-size: 11.5px;
+                          font-weight: 500;
+                          color: rgba(246, 243, 236, 0.6);
+                        "
+                        >সেকেন্ড</span
+                      >
+                    </sc-if>
+                    <sc-if
+                      value="{{ countdownDone }}"
+                      hint-placeholder-val="{{ false }}"
+                    >
+                      <span
+                        style="
+                          font-family: &quot;Noto Serif Bengali&quot;, serif;
+                          font-size: 34px;
+                          font-weight: 800;
+                          color: #e9c86e;
+                          line-height: 1.2;
+                        "
+                        >✓</span
+                      >
+                      <span
+                        style="
+                          font-size: 12.5px;
+                          font-weight: 600;
+                          color: rgba(246, 243, 236, 0.75);
+                        "
+                        >আলহামদুলিল্লাহ</span
+                      >
+                    </sc-if>
+                  </div>
+                  <sc-if
+                    value="{{ countdownRunning }}"
+                    hint-placeholder-val="{{ false }}"
+                  >
+                    <div
+                      style="
+                        font-size: 14.5px;
+                        font-weight: 600;
+                        color: rgba(246, 243, 236, 0.8);
+                      "
+                    >
+                      {{ breathText }}
+                    </div>
+                  </sc-if>
+                  <sc-if
+                    value="{{ countdownDone }}"
+                    hint-placeholder-val="{{ false }}"
+                  >
+                    <div
+                      style="
+                        font-size: 14.5px;
+                        font-weight: 600;
+                        color: rgba(246, 243, 236, 0.8);
+                        text-align: center;
+                        line-height: 1.7;
+                      "
+                    >
+                      ঢেউটা পার হয়ে গেছে — তাড়না চিরকাল থাকে না।
+                    </div>
+                  </sc-if>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    margin-top: auto;
+                    padding-top: 10px;
+                  "
+                >
+                  <button
+                    onClick="{{ closeEmergency }}"
+                    style="
+                      appearance: none;
+                      -webkit-appearance: none;
+                      width: 100%;
+                      box-sizing: border-box;
+                      background: #f6f3ec;
+                      color: #0f2620;
+                      border: none;
+                      border-radius: 999px;
+                      padding: 15px 20px;
+                      font-family: inherit;
+                      font-size: 16px;
+                      font-weight: 700;
+                      cursor: pointer;
+                      transition: transform 0.12s;
+                    "
+                    style-active="transform:scale(0.98);"
+                  >
+                    আলহামদুলিল্লাহ — আমি ঠিক আছি
+                  </button>
+                  <button
+                    onClick="{{ openRelapse }}"
+                    style="
+                      appearance: none;
+                      -webkit-appearance: none;
+                      background: transparent;
+                      border: none;
+                      padding: 10px;
+                      font-family: inherit;
+                      font-size: 13.5px;
+                      font-weight: 600;
+                      color: rgba(246, 243, 236, 0.55);
+                      text-decoration: underline;
+                      cursor: pointer;
+                    "
+                  >
+                    আমি পারিনি — হেরে গেছি
+                  </button>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ showRelapse }}" hint-placeholder-val="{{ false }}">
+            <div
+              data-screen-label="২৪ ঘণ্টার নিয়ম"
+              style="
+                position: fixed;
+                inset: 0;
+                z-index: 110;
+                background: #f6f3ec;
+                overflow: auto;
+                animation: fadeIn 0.3s ease;
+              "
+            >
+              <div
+                style="
+                  max-width: 430px;
+                  margin: 0 auto;
+                  min-height: 100%;
+                  box-sizing: border-box;
+                  padding: 44px 24px 32px;
+                  display: flex;
+                  flex-direction: column;
+                "
+              >
+                <div style="text-align: center; margin-bottom: 22px">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: center;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <svg width="28" height="28" viewBox="0 0 24 24">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="9"
+                        style="fill: #d9b45a"
+                      ></circle>
+                      <circle
+                        cx="15.5"
+                        cy="10"
+                        r="8"
+                        style="fill: #f6f3ec"
+                      ></circle>
+                    </svg>
+                  </div>
+                  <h2
+                    style="
+                      margin: 0 0 8px;
+                      font-family: &quot;Noto Serif Bengali&quot;, serif;
+                      font-size: 26px;
+                      font-weight: 800;
+                      color: #22332c;
+                    "
+                  >
+                    ২৪ ঘণ্টার নিয়ম
+                  </h2>
+                  <p
+                    style="
+                      margin: 0;
+                      font-size: 15px;
+                      font-weight: 500;
+                      color: #6f7a72;
+                      line-height: 1.75;
+                    "
+                  >
+                    হোঁচট খাওয়া মানে যাত্রা শেষ নয়।<br />এখন সবচেয়ে জরুরি —
+                    কীভাবে ফিরবেন।
+                  </p>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 11px">
+                  <div
+                    style="
+                      background: #fffdf8;
+                      border: 1px solid rgba(15, 38, 32, 0.09);
+                      border-radius: 16px;
+                      padding: 15px 16px;
+                    "
+                  >
+                    <div
+                      style="
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        margin-bottom: 5px;
+                      "
+                    >
+                      <span
+                        style="
+                          width: 26px;
+                          height: 26px;
+                          flex: none;
+                          box-sizing: border-box;
+                          border: 1.5px solid #d9b45a;
+                          border-radius: 50%;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          font-family: &quot;Noto Serif Bengali&quot;, serif;
+                          font-size: 12.5px;
+                          font-weight: 700;
+                          color: #8a6d29;
+                        "
+                        >১</span
+                      >
+                      <span
+                        style="
+                          font-family: &quot;Noto Serif Bengali&quot;, serif;
+                          font-size: 16.5px;
+                          font-weight: 700;
+                          color: #22332c;
+                        "
+                        >তওবা করুন</span
+                      >
+                    </div>
+                    <p
+                      style="
+                        margin: 0 0 0 36px;
+                        font-size: 13.5px;
+                        font-weight: 500;
+                        color: #6f7a72;
+                        line-height: 1.7;
+                      "
+                    >
+                      আন্তরিকভাবে ক্ষমা চান। নিশ্চয়ই আল্লাহ তওবাকারীদের
+                      ভালোবাসেন — দরজা সবসময় খোলা।
+                    </p>
+                  </div>
+                  <div
+                    style="
+                      background: #fffdf8;
+                      border: 1px solid rgba(15, 38, 32, 0.09);
+                      border-radius: 16px;
+                      padding: 15px 16px;
+                    "
+                  >
+                    <div
+                      style="
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        margin-bottom: 5px;
+                      "
+                    >
+                      <span
+                        style="
+                          width: 26px;
+                          height: 26px;
+                          flex: none;
+                          box-sizing: border-box;
+                          border: 1.5px solid #d9b45a;
+                          border-radius: 50%;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          font-family: &quot;Noto Serif Bengali&quot;, serif;
+                          font-size: 12.5px;
+                          font-weight: 700;
+                          color: #8a6d29;
+                        "
+                        >২</span
+                      >
+                      <span
+                        style="
+                          font-family: &quot;Noto Serif Bengali&quot;, serif;
+                          font-size: 16.5px;
+                          font-weight: 700;
+                          color: #22332c;
+                        "
+                        >নিজেকে গালি দেবেন না</span
+                      >
+                    </div>
+                    <p
+                      style="
+                        margin: 0 0 0 36px;
+                        font-size: 13.5px;
+                        font-weight: 500;
+                        color: #6f7a72;
+                        line-height: 1.7;
+                      "
+                    >
+                      লজ্জার চক্র তাড়নাকে আরও বাড়ায়। ভুল থেকে শিখুন — নিজেকে
+                      ঘৃণা নয়।
+                    </p>
+                  </div>
+                  <div
+                    style="
+                      background: #fffdf8;
+                      border: 1px solid rgba(15, 38, 32, 0.09);
+                      border-radius: 16px;
+                      padding: 15px 16px;
+                    "
+                  >
+                    <div
+                      style="
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        margin-bottom: 5px;
+                      "
+                    >
+                      <span
+                        style="
+                          width: 26px;
+                          height: 26px;
+                          flex: none;
+                          box-sizing: border-box;
+                          border: 1.5px solid #d9b45a;
+                          border-radius: 50%;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          font-family: &quot;Noto Serif Bengali&quot;, serif;
+                          font-size: 12.5px;
+                          font-weight: 700;
+                          color: #8a6d29;
+                        "
+                        >৩</span
+                      >
+                      <span
+                        style="
+                          font-family: &quot;Noto Serif Bengali&quot;, serif;
+                          font-size: 16.5px;
+                          font-weight: 700;
+                          color: #22332c;
+                        "
+                        >কাল ফজর থেকে আবার শুরু</span
+                      >
+                    </div>
+                    <p
+                      style="
+                        margin: 0 0 0 36px;
+                        font-size: 13.5px;
+                        font-weight: 500;
+                        color: #6f7a72;
+                        line-height: 1.7;
+                      "
+                    >
+                      ২৪ ঘণ্টার মধ্যে সিস্টেমে ফিরুন। একটা হোঁচটে অভ্যাস ভাঙে না
+                      — হাল ছাড়লে ভাঙে।
+                    </p>
+                  </div>
+                </div>
+                <div
+                  style="
+                    margin-top: 14px;
+                    background: rgba(217, 180, 90, 0.13);
+                    border: 1px solid rgba(217, 180, 90, 0.35);
+                    border-radius: 14px;
+                    padding: 12px 15px;
+                  "
+                >
+                  <span
+                    style="
+                      font-size: 13.5px;
+                      font-weight: 600;
+                      color: #7a6224;
+                      line-height: 1.7;
+                    "
+                    >আপনার আগের {{ allTimeBn }} সফল দিন ইতিহাসে রয়ে গেছে —
+                    সেগুলো মিথ্যা হয়ে যায়নি। ধারা আবার শূন্য থেকে, কিন্তু
+                    অভিজ্ঞতা সঙ্গে নিয়ে।</span
+                  >
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    margin-top: auto;
+                    padding-top: 22px;
+                  "
+                >
+                  <button
+                    onClick="{{ confirmRelapse }}"
+                    style="
+                      appearance: none;
+                      -webkit-appearance: none;
+                      width: 100%;
+                      box-sizing: border-box;
+                      background: #2e6e5e;
+                      color: #f6f3ec;
+                      border: none;
+                      border-radius: 999px;
+                      padding: 15px 20px;
+                      font-family: inherit;
+                      font-size: 16px;
+                      font-weight: 700;
+                      cursor: pointer;
+                      transition: transform 0.12s;
+                    "
+                    style-active="transform:scale(0.98);"
+                  >
+                    তওবা করলাম — কাল ফজরে নতুন শুরু
+                  </button>
+                  <button
+                    onClick="{{ closeEmergency }}"
+                    style="
+                      appearance: none;
+                      -webkit-appearance: none;
+                      background: transparent;
+                      border: none;
+                      padding: 10px;
+                      font-family: inherit;
+                      font-size: 13.5px;
+                      font-weight: 600;
+                      color: #6f7a72;
+                      text-decoration: underline;
+                      cursor: pointer;
+                    "
+                  >
+                    ফিরে যাই — আমি এখনো হারিনি
+                  </button>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </x-dc>
+    <script
+      type="text/x-dc"
+      data-dc-script
+      data-props='{"showWeeklyReview":{"editor":"boolean","default":true,"tsType":"boolean","section":"আচরণ"},"breathingSeconds":{"editor":"range","default":120,"min":30,"max":120,"step":10,"unit":"সে","tsType":"number","section":"আচরণ"}}'
+    >
+      class Component extends DCLogic {
+        KEY = 'sakiber-dainik-system-v1';
+        TIMELINE = [
+          { anchor: 'ফজর', task: 'নামাজ + ১০ মিনিট কুরআন → Programming Hero মডিউল', sub: 'দিনের প্রথম কাজ — সবচেয়ে কঠিনটা আগে' },
+          { anchor: 'যোহর → আসর', task: 'গাণিতিক বিষয়ের কোর্স থেকে ১টা লেসন', sub: '' },
+          { anchor: 'মাগরিব → এশা', task: 'থিওরি বিষয় — Claude + NotebookLM দিয়ে ১টা টপিক', sub: '' },
+          { anchor: 'এশার পর', task: 'আগামীকালের ৩টা কাজ লেখা + ফোন দূরে রেখে ঘুম', sub: '' }
+        ];
+        SCORE = ['৫ ওয়াক্ত নামাজ?', 'ওয়েব ডেভ ১ সেশন?', 'পড়াশোনা ১ সেশন?', 'হারাম থেকে দূরে ছিলাম?'];
+
+        state = { store: this.loadStore(), showEmergency: false, showRelapse: false, countdown: null, countdownTotal: 60 };
+
+        loadStore() {
+          try {
+            const raw = localStorage.getItem('sakiber-dainik-system-v1');
+            if (raw) {
+              const p = JSON.parse(raw);
+              return { days: p.days || {}, reflections: p.reflections || {} };
+            }
+          } catch (e) {}
+          return { days: {}, reflections: {} };
+        }
+
+        persist(store) {
+          try { localStorage.setItem(this.KEY, JSON.stringify(store)); } catch (e) {}
+        }
+
+        bn(n) { return String(n).replace(/[0-9]/g, (d) => '০১২৩৪৫৬৭৮৯'[+d]); }
+
+        dateKey(d) {
+          return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+        }
+
+        emptyDay() { return { t: [false, false, false, false], s: [false, false, false, false], relapse: false }; }
+
+        getDayRec(store, key) {
+          const r = store.days[key];
+          return r ? { t: (r.t || []).slice(0, 4), s: (r.s || []).slice(0, 4), relapse: !!r.relapse } : this.emptyDay();
+        }
+
+        mutateToday(fn) {
+          this.setState((st) => {
+            const store = { days: Object.assign({}, st.store.days), reflections: Object.assign({}, st.store.reflections) };
+            const key = this.dateKey(new Date());
+            const rec = this.getDayRec(store, key);
+            fn(rec);
+            store.days[key] = rec;
+            this.persist(store);
+            return { store };
+          });
+        }
+
+        isSuccess(r) { return !!r && !r.relapse && (r.s || []).filter(Boolean).length >= 3; }
+
+        weekId() {
+          const d = new Date();
+          const back = (d.getDay() + 1) % 7; // সপ্তাহ শুরু শনিবার
+          const s = new Date(d);
+          s.setDate(d.getDate() - back);
+          return 'w-' + this.dateKey(s);
+        }
+
+        saveReflection(v) {
+          this.setState((st) => {
+            const store = { days: Object.assign({}, st.store.days), reflections: Object.assign({}, st.store.reflections) };
+            store.reflections[this.weekId()] = v;
+            this.persist(store);
+            return { store };
+          });
+        }
+
+        encourage(streak) {
+          if (streak === 0) return 'প্রতিটা বড় পরিবর্তন শুরু হয় একটা দিনে। আজই সেই দিন হোক, ইন শা আল্লাহ।';
+          if (streak <= 2) return 'বিসমিল্লাহ — শুরুটা হয়ে গেছে। এখন শুধু কালকের দিনটা।';
+          if (streak <= 6) return this.bn(streak) + ' দিনের ধারা — অভ্যাস শিকড় গাড়ছে। থামবেন না।';
+          if (streak <= 13) return 'মাশাআল্লাহ! পুরো এক সপ্তাহ পার — আপনি প্রমাণ করছেন এটা সম্ভব।';
+          if (streak <= 29) return 'দুই সপ্তাহের বেশি! ধারাবাহিকতাই এখন আপনার পরিচয়।';
+          return 'এক মাসের বেশি — আলহামদুলিল্লাহ। এই সিস্টেম এখন আপনার জীবনের অংশ।';
+        }
+
+        openEmergency() {
+          const total = Math.round(this.props.breathingSeconds ?? 60);
+          if (this._timer) clearInterval(this._timer);
+          this.setState({ showEmergency: true, showRelapse: false, countdown: total, countdownTotal: total });
+          this._timer = setInterval(() => {
+            this.setState((st) => {
+              if (st.countdown === null) return null;
+              if (st.countdown <= 1) {
+                clearInterval(this._timer);
+                this._timer = null;
+                return { countdown: 0 };
+              }
+              return { countdown: st.countdown - 1 };
+            });
+          }, 1000);
+        }
+
+        closeEmergency() {
+          if (this._timer) { clearInterval(this._timer); this._timer = null; }
+          this.setState({ showEmergency: false, showRelapse: false, countdown: null });
+        }
+
+        openRelapse() {
+          if (this._timer) { clearInterval(this._timer); this._timer = null; }
+          this.setState({ showRelapse: true });
+        }
+
+        confirmRelapse() {
+          this.mutateToday((r) => { r.relapse = true; r.s[3] = false; });
+          if (this._timer) { clearInterval(this._timer); this._timer = null; }
+          this.setState({ showEmergency: false, showRelapse: false, countdown: null });
+        }
+
+        componentWillUnmount() {
+          if (this._timer) clearInterval(this._timer);
+        }
+
+        renderVals() {
+          const now = new Date();
+          const todayKey = this.dateKey(now);
+          const store = this.state.store;
+          const rec = this.getDayRec(store, todayKey);
+
+          const timelineItems = this.TIMELINE.map((def, i) => {
+            const checked = !!rec.t[i];
+            return {
+              anchor: def.anchor,
+              task: def.task,
+              sub: def.sub,
+              checked,
+              toggle: () => this.mutateToday((r) => { r.t[i] = !r.t[i]; }),
+              cardBg: checked ? '#edf4f0' : '#fffdf8',
+              cardBorder: checked ? 'rgba(46,110,94,0.32)' : 'rgba(15,38,32,0.09)',
+              nodeBg: checked ? '#d9b45a' : '#f6f3ec',
+              lineBg: i === this.TIMELINE.length - 1 ? 'transparent' : 'rgba(217,180,90,0.45)',
+              checkBg: checked ? '#2e6e5e' : 'transparent',
+              checkBorder: checked ? '#2e6e5e' : '#c9c2b1',
+              textOpacity: checked ? 0.6 : 1
+            };
+          });
+          const tDone = rec.t.filter(Boolean).length;
+
+          const scoreItems = this.SCORE.map((label, i) => {
+            const checked = !!rec.s[i];
+            return {
+              label,
+              checked,
+              toggle: () => this.mutateToday((r) => { r.s[i] = !r.s[i]; }),
+              rowBg: checked ? 'rgba(46,110,94,0.07)' : 'transparent',
+              rowBorder: i === this.SCORE.length - 1 ? 'none' : '1px solid rgba(15,38,32,0.07)',
+              boxBg: checked ? '#2e6e5e' : 'transparent',
+              boxBorder: checked ? '#2e6e5e' : '#c9c2b1'
+            };
+          });
+          const scoreDone = rec.s.filter(Boolean).length;
+          const isSuccessToday = !rec.relapse && scoreDone >= 3;
+
+          let streak = 0;
+          const cursor = new Date(now);
+          if (!this.isSuccess(store.days[todayKey])) cursor.setDate(cursor.getDate() - 1);
+          for (let i = 0; i < 4000; i++) {
+            const k = this.dateKey(cursor);
+            if (this.isSuccess(store.days[k])) { streak++; cursor.setDate(cursor.getDate() - 1); } else break;
+          }
+
+          let allTime = 0;
+          Object.keys(store.days).forEach((k) => { if (this.isSuccess(store.days[k])) allTime++; });
+
+          const weekDots = [];
+          let weekCount = 0;
+          for (let i = 6; i >= 0; i--) {
+            const d = new Date(now);
+            d.setDate(now.getDate() - i);
+            const r = store.days[this.dateKey(d)];
+            const succ = this.isSuccess(r);
+            if (succ) weekCount++;
+            const isToday = i === 0;
+            let bg = 'transparent';
+            let border = '2px solid #d5cebd';
+            if (r) {
+              if (succ) { bg = '#2e6e5e'; border = '2px solid #2e6e5e'; }
+              else { bg = '#ddd5c3'; border = '2px solid #ddd5c3'; }
+            }
+            let label = '';
+            try { label = new Intl.DateTimeFormat('bn', { weekday: 'short' }).format(d); } catch (e) {}
+            weekDots.push({
+              label, bg, border,
+              shadow: isToday ? '0 0 0 2px #fffdf8, 0 0 0 4px #d9b45a' : 'none',
+              labelColor: isToday ? '#8a6d29' : '#8b9289',
+              labelWeight: isToday ? 700 : 500
+            });
+          }
+
+          const streakMsg = rec.relapse
+            ? 'আজ হোঁচট খেয়েছেন — কাল ফজর থেকে নতুন শুরু। আল্লাহ ক্ষমাশীল।'
+            : this.encourage(streak);
+
+          let dateLine = '';
+          try { dateLine = new Intl.DateTimeFormat('bn', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(now); } catch (e) {}
+          let hijri = '';
+          try { hijri = new Intl.DateTimeFormat('bn-u-ca-islamic-umalqura', { day: 'numeric', month: 'long', year: 'numeric' }).format(now); }
+          catch (e) {
+            try { hijri = new Intl.DateTimeFormat('bn-u-ca-islamic', { day: 'numeric', month: 'long', year: 'numeric' }).format(now); } catch (e2) {}
+          }
+          const fullDate = hijri ? dateLine + '  •  ' + hijri : dateLine;
+
+          const showWeekly = (this.props.showWeeklyReview ?? false) || now.getDay() === 5;
+          const reflectionText = store.reflections[this.weekId()] || '';
+
+          const countdown = this.state.countdown;
+          const countdownRunning = this.state.showEmergency && countdown !== null && countdown > 0;
+          const countdownDone = this.state.showEmergency && countdown === 0;
+          const elapsed = countdown === null ? 0 : this.state.countdownTotal - countdown;
+          const breathText = (elapsed % 8) < 4 ? 'ধীরে শ্বাস নিন…' : 'ধীরে শ্বাস ছাড়ুন…';
+
+          return {
+            fullDate,
+            timelineItems,
+            tProgress: this.bn(tDone) + '/৪',
+            scoreItems,
+            sProgress: this.bn(scoreDone) + '/৪',
+            isSuccessToday,
+            streakBn: this.bn(streak),
+            streakMsg,
+            weekDots,
+            allTimeBn: this.bn(allTime),
+            showWeekly,
+            weekCountBn: this.bn(weekCount),
+            reflectionText,
+            onReflect: (e) => this.saveReflection(e.target.value),
+            showEmergency: this.state.showEmergency,
+            showRelapse: this.state.showRelapse,
+            openEmergency: () => this.openEmergency(),
+            closeEmergency: () => this.closeEmergency(),
+            openRelapse: () => this.openRelapse(),
+            confirmRelapse: () => this.confirmRelapse(),
+            countdownBn: this.bn(countdown === null ? 0 : countdown),
+            countdownRunning,
+            countdownDone,
+            breathText
+          };
+        }
+      }
+    </script>
+  </body>
+</html>
